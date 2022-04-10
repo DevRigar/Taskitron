@@ -13,7 +13,7 @@ const app = express()
 app.use(express.json())                         //Middleware για να καταλαβαίνει 
 app.use(express.urlencoded({extended: false}))  //jsons forms κτλ.
 
-app.use('/api/taskitron',require('./routes/taskitronRoutes'))
+app.use('/api/tasks',require('./routes/tasksRoutes'))
 app.use('/api/users',require('./routes/userRoutes'))
 
 app.use(errorHandler)                           
