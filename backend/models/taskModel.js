@@ -29,7 +29,9 @@ const taskSchema = mongoose.Schema(
         type: String
     },
     list:[String],
-    
+    date:{
+        type: String,
+    },
     },
     
     {

@@ -1,17 +1,26 @@
 import { useState } from "react"
 import {useDispatch} from 'react-redux'
 import {createTask} from '../features/tasks/taskSlice'
+import DatePicker from 'react-date-picker'
+
+
+
+
 
 function TaskForm() {
+  const [taskDate,setTaskDate] = useState(new Date())
   const [task,setTask] = useState({
     title:"",
     description:"",
     location:"",
     priority:"",
     assign:"",
-    list:[]
+    list:[],
   }) 
   const dispatch = useDispatch()
+
+
+
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -19,16 +28,18 @@ function TaskForm() {
     setTask(prevTask => {
       return {
         ...prevTask,
-        [name]: value
+        [name]: value,
       };
     });
   }
   
+  const date=new Date(taskDate).toLocaleString('en-GB').substring(0,10)
   
   const onSubmit = e =>{
     e.preventDefault()
-    dispatch(createTask({task}))
+    dispatch(createTask({task,date}))
     console.log(task)
+    console.log(taskDate)
     setTask({
       title:"",
       description:"",
@@ -50,6 +61,17 @@ function TaskForm() {
                 value={task.title} 
                 onChange={handleChange}
             />
+        </div>
+        <div clas sName="form-group">
+        <label htmlFor = "date">Date</label>
+            <DatePicker
+              type="taskdate" 
+              name='taskdate' 
+              id='taskdate' 
+              onChange={setTaskDate}
+              value={taskDate}
+              format="dd/MM/y"
+             />
         </div>
         <div className="form-group">
             <label htmlFor = "description">description</label>
