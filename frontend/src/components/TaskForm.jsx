@@ -1,11 +1,14 @@
 import { useState } from "react"
 import {useDispatch} from 'react-redux'
 import {createTask} from '../features/tasks/taskSlice'
-import DatePicker from 'react-date-picker'
-
-
-
-
+import DatePicker from 'react-datepicker'
+import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import '../css/TaskForm.css'
+import "react-datepicker/dist/react-datepicker.css";
 
 function TaskForm() {
   const [taskDate,setTaskDate] = useState(new Date())
@@ -50,86 +53,101 @@ function TaskForm() {
     })
   }
 
-  return <section className="form">
-      <form onSubmit={onSubmit} >
-        <div className="form-group">
-            <label htmlFor = "title">Task</label>
-            <input 
+  return <Container className="container-flat" >
+      <Form onSubmit={onSubmit}>
+        <Row>
+          <Col>
+            <Form.Group>
+              <Form.Label>Title</Form.Label>
+              <Form.Control
                 type="title" 
                 name='title'
                 id='title' 
                 value={task.title} 
                 onChange={handleChange}
-            />
-        </div>
-        <div clas sName="form-group">
-        <label htmlFor = "date">Date</label>
-            <DatePicker
-              type="taskdate" 
-              name='taskdate' 
-              id='taskdate' 
-              onChange={setTaskDate}
-              value={taskDate}
-              format="dd/MM/y"
-             />
-        </div>
-        <div className="form-group">
-            <label htmlFor = "description">description</label>
-            <input
+              />
+              </Form.Group>
+              <Form.Group >
+            <Form.Label>Description</Form.Label> 
+            <Form.Control
                 type="description" 
                 name='description' 
                 id='description' 
                 value={task.description} 
                 onChange={handleChange}
             />
-        </div>
-        <div className="form-group">
-            <label htmlFor = "location">location</label>
-            <input
+        </Form.Group>
+        <Form.Group >
+            <Form.Label>Location</Form.Label>
+            <Form.Control
                 type="location" 
                 name='location' 
                 id='location' 
                 value={task.location} 
                 onChange={handleChange}
             />
-        </div>
-        <div className="form-group">
-            <label htmlFor = "priority">priority</label>
-            <input
+        </Form.Group>
+        <Form.Group >
+        <Form.Label>Priority</Form.Label>
+            <Form.Select
                 type="priority" 
                 name='priority' 
                 id='priority' 
                 value={task.priority} 
                 onChange={handleChange}
-            />
-        </div>
-        <div className="form-group">
-            <label htmlFor = "assign">assign</label>
-            <input
+            >
+              <option value="red">Must do</option>
+              <option value="yellow">Can be rescheduled</option>
+              <option value="green">Optional</option>
+            </Form.Select>
+        </Form.Group>
+        <Form.Group >
+        <Form.Label>Assign</Form.Label>
+            <Form.Control
                 type="assign" 
                 name='assign' 
                 id='assign' 
                 value={task.assign} 
                 onChange={handleChange}
             />
-        </div>
-        <div className="form-group">
-            <label htmlFor = "list">list</label>
-            <input
+        </Form.Group>
+        
+          </Col>
+          <Col> 
+            <Form.Group>            
+                <Form.Label>Date</Form.Label>               
+                <DatePicker className="form-control"
+                  type="taskdate" 
+                  name='taskdate' 
+                  id='taskdate' 
+                  onChange={setTaskDate}
+                  value={taskDate}
+                  selected={taskDate}
+                  dateFormat="dd/MM/y"
+                />       
+     
+            </Form.Group>
+            <Form.Group >
+              <Form.Label>List</Form.Label>
+                <Form.Control
                 type="list" 
                 name='list' 
                 id='list' 
                 value={task.list} 
                 onChange={handleChange}
-            />
-        </div>
-        <div className="form-group">
-            <button className="btn btn-block" type='submit'>
+                />
+            </Form.Group>
+          </Col>             
+        </Row>
+            <Row>
+            <Form.Group>
+            <Button className="mt-4 mb-2" variant="primary" type="submit">
                 Add Task
-            </button>
-        </div>
-      </form>
-  </section>
+            </Button>
+            </Form.Group>
+            </Row>
+      </Form>
+  </Container>
 }
 
 export default TaskForm

@@ -108,13 +108,13 @@ h3 {
   background: none;
 }
 
-.form,
+/* .form,
 .content {
   width: 70%;
   margin: 0 auto;
-}
+} */
 
-.form-group {
+/* .form-group {
   margin-bottom: 10px;
 }
 
@@ -127,7 +127,7 @@ h3 {
   border-radius: 5px;
   margin-bottom: 10px;
   font-family: inherit;
-}
+} */
 
 .form-group label {
   text-align: left;
@@ -135,7 +135,7 @@ h3 {
   margin: 0 0 5px 3px;
 }
 
-.btn {
+/* .btn {
   padding: 10px 20px;
   border: 1px solid #000;
   border-radius: 5px;
@@ -149,7 +149,7 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .btn svg {
   margin-right: 8px;
