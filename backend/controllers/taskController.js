@@ -29,7 +29,7 @@ const setTask = asyncHandler(async (req,res) => {
         location:req.body.task.location,
         priority:req.body.task.priority,
         assign:req.body.task.assign,
-        list:req.body.task.list,
+        list:req.body.listItems,
         date:req.body.date,
     })
 

@@ -9,8 +9,11 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import '../css/TaskForm.css'
 import "react-datepicker/dist/react-datepicker.css";
+import Card from 'react-bootstrap/Card'
+import ListGroup from 'react-bootstrap/ListGroup'
 
 function TaskForm() {
+  const [listItems,setListItems]=useState([])
   const [taskDate,setTaskDate] = useState(new Date())
   const [task,setTask] = useState({
     title:"",
@@ -18,16 +21,14 @@ function TaskForm() {
     location:"",
     priority:"",
     assign:"",
-    list:[],
+    list:['']
   }) 
   const dispatch = useDispatch()
 
 
-
-
   function handleChange(event) {
     const { name, value } = event.target;
-
+    
     setTask(prevTask => {
       return {
         ...prevTask,
@@ -36,22 +37,35 @@ function TaskForm() {
     });
   }
   
+  function handleList(event){
+    const listItem=task.list
+    setListItems(prevListItems =>{
+      return[
+        ...prevListItems,
+        listItem]
+      
+    })
+    task.list=['']
+  }
   const date=new Date(taskDate).toLocaleString('en-GB').substring(0,10)
   
   const onSubmit = e =>{
     e.preventDefault()
-    dispatch(createTask({task,date}))
-    console.log(task)
+    dispatch(createTask({task,date,listItems}))
+    
     console.log(taskDate)
+    console.log(listItems)
+    console.log(task)
     setTask({
       title:"",
       description:"",
       location:"",
       priority:"",
       assign:"",
-      list:[],
     })
   }
+
+
 
   return <Container className="container-flat" >
       <Form onSubmit={onSubmit}>
@@ -96,9 +110,9 @@ function TaskForm() {
                 value={task.priority} 
                 onChange={handleChange}
             >
-              <option value="red">Must do</option>
-              <option value="yellow">Can be rescheduled</option>
-              <option value="green">Optional</option>
+              <option value="Must do">Must do</option>
+              <option value="Can be rescheduled">Can be rescheduled</option>
+              <option value="Optional">Optional</option>
             </Form.Select>
         </Form.Group>
         <Form.Group >
@@ -133,9 +147,16 @@ function TaskForm() {
                 type="list" 
                 name='list' 
                 id='list' 
-                value={task.list} 
+                value={task.list}
                 onChange={handleChange}
                 />
+                <Button className="btn-sm mt-2 mb-2 ml-5" 
+                onClick={handleList}>Add item to list</Button>
+                <ListGroup>
+                 {listItems.map(function(listItem,index){
+                   return <ListGroup.Item key={index}>{listItem}</ListGroup.Item>
+                 })}
+               </ListGroup>
             </Form.Group>
           </Col>             
         </Row>

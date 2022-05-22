@@ -20,7 +20,7 @@ const taskSchema = mongoose.Schema(
     priority:{
         type:String,
         enum:{
-            values:['','red','yellow','green'],
+            values:['','Must do','Can be rescheduled','Optional'],
             message:'{VALUE} is not supported'
         }
 
