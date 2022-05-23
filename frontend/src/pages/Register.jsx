@@ -5,7 +5,7 @@ import {toast} from 'react-toastify'
 import {FaUser} from 'react-icons/fa'
 import {register,reset} from '../features/auth/authSlice'
 import Spinner from '../components/Spinner'
-
+import Button from 'react-bootstrap/Button'
 
 
 function Register() {
@@ -125,7 +125,7 @@ function Register() {
           </div>
 
           <div className='form-group'>
-            <button type="submit" className='btn btn-block'>Submit</button>
+            <Button type="submit" className='btn-custom'>Submit</Button>
           </div>
           
         </form>

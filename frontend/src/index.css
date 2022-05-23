@@ -4,11 +4,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
+  
 }
 
 a {
@@ -75,16 +77,14 @@ h3 {
   margin-right: 5px;
 }
 
-.heading {
+.heading p {
   font-size: 2rem;
   font-weight: 700;
   margin-bottom: 50px;
   padding: 0 20px;
 }
 
-.heading p {
-  color: #828282;
-}
+
 
 .goals {
   display: grid;
@@ -108,26 +108,7 @@ h3 {
   background: none;
 }
 
-/* .form,
-.content {
-  width: 70%;
-  margin: 0 auto;
-} */
 
-/* .form-group {
-  margin-bottom: 10px;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #e6e6e6;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  font-family: inherit;
-} */
 
 .form-group label {
   text-align: left;
@@ -135,21 +116,6 @@ h3 {
   margin: 0 0 5px 3px;
 }
 
-/* .btn {
-  padding: 10px 20px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  background: #000;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  text-align: center;
-  appearance: button;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
 
 .btn svg {
   margin-right: 8px;
@@ -167,6 +133,19 @@ h3 {
 
 .btn:hover {
   transform: scale(0.98);
+}
+
+.btn-custom {
+  margin-top: 10px;
+  background-color: #61319b;
+  color: white;
+  
+}
+
+.btn-custom:hover{
+  color: white;
+  background-color: #581f9e;
+
 }
 
 .loadingSpinnerContainer {

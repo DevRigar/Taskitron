@@ -1,0 +1,26 @@
+.card {
+    background-color:#af6885;
+
+}
+
+.list-group{
+    background-color:#a8a1a4;
+    color:rgba(0, 0, 0, 0.473)
+}
+
+.group {
+    border-color: rgba(0, 0, 0, 0.301);
+    border-style: solid;
+    border-width: 1px;
+}
+
+.list-group-item {
+    border: none;
+    background-color: #af688665;
+    font-weight: 500;
+}
+
+.card-header{
+    font-size: 1.5rem;
+    font-weight: 500;
+}

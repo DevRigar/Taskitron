@@ -6,6 +6,8 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import '../css/TaskItem.css'
+import CardHeader from 'react-bootstrap/esm/CardHeader'
 
 function TaskItem({task}) {
   const dispatch = useDispatch()
@@ -13,39 +15,42 @@ function TaskItem({task}) {
 
   return (
     <Card className='mt-4'>
-      <Row className="g-0">
-        <Col md={5}>
+      <Row className="g-0 group">
+        <Col >
           <Card.Header >{task.title}</Card.Header>
         </Col>
-        <Col md={5}>
+        <Col>
           <Card.Header>{task.date}</Card.Header>
         </Col>
-        <Col className="d-flex justify-content-center mb-0 align-items-center" md={2}> 
-          <Button  variant="danger" size="sm"
+        <Col md={1} as={CardHeader} className="p-0 d-flex justify-content-end"> 
+          <Button  className='sm'  variant="danger" 
           onClick={()=> dispatch(deleteTask(task._id))}
           >X</Button>
         </Col>
       </Row>
-    <ListGroup variant="flush">
-      
-        <Form.Label className={task.description ? "d-flex justify-content-start mb-0" : "d-none"}>Description</Form.Label>
-        <ListGroup.Item className={task.description ? 'pt-0' : "d-none"}>{task.description}</ListGroup.Item>
-      
-    
-        <Form.Label className={task.location ? "d-flex justify-content-start mb-0" : "d-none"}>Location</Form.Label>
-        <ListGroup.Item className={task.location ? 'pt-0' : "d-none"}>{task.location}</ListGroup.Item>
-      
-        <Form.Label className={task.priority ? "d-flex justify-content-start mb-0" : "d-none"}>Priority</Form.Label>
-        <ListGroup.Item className={task.priority ? 'pt-0' : "d-none"}>{task.priority}</ListGroup.Item>
-
-        <Form.Label className={task.assign ? "d-flex justify-content-start mb-0" : "d-none"}>Assigned to:</Form.Label>
-        <ListGroup.Item className={task.assign ? 'pt-0' : "d-none"}>{task.assign}</ListGroup.Item>
-
-        <Form.Label className={task.list.length > 0 ? "d-flex justify-content-start mb-0" : "d-none"}>List</Form.Label>
-        {task.list.length > 0 && task.list.map(function(listItem,index){
-                   return <ListGroup.Item key={index}>{listItem}</ListGroup.Item>
-                 })}
-      
+    <ListGroup>
+        <div className='rounded'>
+          <Form.Label className={task.description ? "d-flex justify-content-start mb-0" : "d-none"}>Description</Form.Label>
+          <ListGroup.Item className={task.description ? 'pt-0' : "d-none"}>{task.description}</ListGroup.Item>
+        </div>
+        <div className='rounded'>
+          <Form.Label className={task.location ? "d-flex justify-content-start mb-0" : "d-none"}>Location</Form.Label>
+          <ListGroup.Item className={task.location ? 'pt-0' : "d-none"}>{task.location}</ListGroup.Item>
+        </div>
+        <div className='rounded'>
+          <Form.Label className={task.priority ? "d-flex justify-content-start mb-0" : "d-none"}>Priority</Form.Label>
+          <ListGroup.Item className={task.priority ? 'pt-0 ' : "d-none"}>{task.priority}</ListGroup.Item>
+        </div>
+        <div className='rounded'>
+          <Form.Label className={task.assign ? "d-flex justify-content-start mb-0" : "d-none"}>Assigned to:</Form.Label>
+          <ListGroup.Item className={task.assign ? 'pt-0' : "d-none"}>{task.assign}</ListGroup.Item>
+        </div>
+        <div className='rounded'>
+          <Form.Label className= {task.list.length > 0 ? "d-flex justify-content-start mb-0" : "d-none"}>List</Form.Label>
+          {task.list.length > 0 && task.list.map(function(listItem,index){
+                     return <ListGroup.Item key={index}>{listItem}</ListGroup.Item>
+                   })}
+        </div>
       <Form.Label className="d-flex justify-content-start mb-0">Created at:</Form.Label>
       <ListGroup.Item className='pt-0'>{new Date(task.createdAt).toLocaleString('en-GB').substring(0,10)}</ListGroup.Item>
     

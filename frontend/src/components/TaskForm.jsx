@@ -9,7 +9,6 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import '../css/TaskForm.css'
 import "react-datepicker/dist/react-datepicker.css";
-import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 
 function TaskForm() {
@@ -144,13 +143,14 @@ function TaskForm() {
             <Form.Group >
               <Form.Label>List</Form.Label>
                 <Form.Control
+                autoComplete="off"
                 type="list" 
                 name='list' 
                 id='list' 
                 value={task.list}
                 onChange={handleChange}
                 />
-                <Button className="btn-sm mt-2 mb-2 ml-5" 
+                <Button variant="custom" className="btn-sm mt-2 mb-2 ml-5" 
                 onClick={handleList}>Add item to list</Button>
                 <ListGroup>
                  {listItems.map(function(listItem,index){
@@ -162,7 +162,7 @@ function TaskForm() {
         </Row>
             <Row>
             <Form.Group>
-            <Button className="mt-4 mb-2" variant="primary" type="submit">
+            <Button className="mt-4 mb-2 btn-custom" variant="custom" type="submit">
                 Add Task
             </Button>
             </Form.Group>
