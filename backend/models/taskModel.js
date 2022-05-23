@@ -10,8 +10,30 @@ const taskSchema = mongoose.Schema(
     title: {
         type: String,
         required: [true, 'Please add a title']
-        }
+        },
+    description:{
+        type: String
     },
+    location:{
+        type: String
+    },
+    priority:{
+        type:String,
+        enum:{
+            values:['','Must do','Can be rescheduled','Optional'],
+            message:'{VALUE} is not supported'
+        }
+
+    },
+    assign:{
+        type: String
+    },
+    list:[String],
+    date:{
+        type: String,
+    },
+    },
+    
     {
     timestamps:true
     }

@@ -1,0 +1,36 @@
+
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+body{
+    background-color: #92899e;
+}
+.container-flat{
+    border-radius: 2%;
+    background-color:#af6885;
+}
+
+
+
+
+.datepicker{
+    height: 38px;
+    border-radius:5px;
+}
+
+form label {
+    font-size : larger;
+    font-weight : 500;
+    color: black;
+}
+
+.btn-custom {
+    background-color: #61319b;
+    color: white;
+    
+}
+
+.btn-custom:hover{
+    color: white;
+    background-color: #581f9e;
+
+}

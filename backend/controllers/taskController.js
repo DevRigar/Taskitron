@@ -17,14 +17,20 @@ const getTasks = asyncHandler( async (req,res) => {
 //@route    POST /api/tasks
 //@access   Private
 const setTask = asyncHandler(async (req,res) => {
-    if (!req.body.title){
+    if (!req.body.task){
         res.status(400)
         throw new Error('Please add a text field') //Built-in Express Error Handler
     }
 
     const task = await Task.create({
-        title:req.body.title,
+        title:req.body.task.title,
         user:req.user.id,
+        description:req.body.task.description,
+        location:req.body.task.location,
+        priority:req.body.task.priority,
+        assign:req.body.task.assign,
+        list:req.body.listItems,
+        date:req.body.date,
     })
 
     res.status(200).json(task)

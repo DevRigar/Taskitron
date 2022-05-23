@@ -2,6 +2,7 @@ import {FaSignInAlt,FaSignOutAlt,FaUser} from 'react-icons/fa'
 import {Link,useNavigate} from 'react-router-dom'
 import {useSelector,useDispatch} from 'react-redux'
 import {logout,reset} from '../features/auth/authSlice'
+import logo from '../css/logo.svg';
 
 function Header() {
   const navigate = useNavigate()
@@ -17,7 +18,9 @@ function Header() {
   return (
     <header className='header'>
         <div className='logo'>
-            <Link to = '/'>TaskSetter</Link>
+            <Link to = '/'>
+              <img style={{width:100}} src={logo} alt="Taskitron" />
+            </Link>
         </div>
         <ul>
           {user ? (
@@ -28,12 +31,12 @@ function Header() {
             </li>
             ) : (<>
             <li>
-              <Link to ='/login'>
+              <Link style={{color:'black'}} to ='/login'>
                   <FaSignInAlt /> Login
               </Link>
           </li>
           <li>
-              <Link to ='/register'>
+              <Link style={{color:'black'}} to ='/register'>
                   <FaUser /> Register
               </Link>
           </li>
